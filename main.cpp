@@ -54,7 +54,7 @@ void threading(int start, vector<string> wordlist) {
 
     clog << "[+] Thread " << start + 1 << " created!" << endl;
     //j = pw-zeichen anzahl
-    for (int j = minlength - 1; j <= maxlength; ++j) {
+    for (int j = minlength; j <= maxlength; ++j) {
         g_lock.lock();
         clog << "[*] Thread " << start + 1 << " now appends " << j << " chars" << endl;
         g_lock.unlock();
@@ -505,11 +505,11 @@ int main(int argc, char *argv[]) {
         }
         else if ((arg == "-min") || (arg == "-Min")) {
             i++;
-            minlength += atoi(argv[i]);
+            minlength = atoi(argv[i]);
         }
         else if ((arg == "-max") || (arg == "-Max")) {
             i++;
-            maxlength += atoi(argv[i]);
+            maxlength = atoi(argv[i]);
         }
         else if ((arg == "-h") || (arg == "-H")) {
             help();
