@@ -67,7 +67,7 @@ and so on...
 If you want to use a specific charset to append/prepend use -charset    
 
 e.g.    
-<code>./pipeline -append -max 3 -capfirst -capnone -charset 2\"\!</code>    
+<code>./pipeline -append -max 3 -capfirst -capnone -charset 2\"\\!</code>    
 
 output:    
 
