@@ -32,7 +32,7 @@ If you like Pipeline please check out Matt Weir's work over at https://sites.goo
 <code>
     ./pipeline -w rockyou.txt -w dictionary.txt -capFirst -append -max 3 | ./john -stdin -format=NT hashlist.txt
 </code>    
-    Takes two input dictionarys, capitalizes the first letter, appends 3 chars and pipes the output to John    
+    Takes two input dictionarys, capitalizes the first letter, appends 0-3 chars and pipes the output to John    
 
 
 ###### How it works
