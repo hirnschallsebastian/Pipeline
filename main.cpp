@@ -434,11 +434,6 @@ int main(int argc, char *argv[]) {
     if (argc < 2) {
         help();
         return 0;
-        //append=true;
-        //capfirst=true;
-        //capnone=true;
-        //threadcount=1;
-        //bufferLength=100;
     }
     for (int i = 1; i < argc; i++) {
         string arg{argv[i]};
