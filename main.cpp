@@ -28,40 +28,52 @@ int bufferLength{2000000},
 
 string charset{"\01203495687.!-@*_$#/,+%&?;=~^)[\\]`(:<'>|\"€"};
 
+/**
+ * Function threading
+ *
+ * int start        variable to start multiple threads not at the same position
+ * array wordlist   array with all passwords found in the dictionaries provided by the user
+ *
+ * This function will guess every possible combination of chars (n-length) and append/prepend them to the words in wordlist
+ *
+ *
+ */
 void threading(int start, vector<string> wordlist) {
-
 
     //array buffer
     vector<string> finalguess(bufferLength);
 
     //array chars
-
     string chars{charset};
 
     int count{0};
     unsigned long long size{chars.size()},
             wordcount{wordlist.size()};
 
-
     string guess{""};
 
     clog << "[+] Thread " << start + 1 << " created!" << endl;
-    //j = pw-zeichen anzahl
+
+
+    //j = guess length (number of chars to guess)
     for (int j = minlength; j <= maxlength; ++j) {
+        //out status
         g_lock.lock();
         clog << "[*] Thread " << start + 1 << " now appends " << j << " chars" << endl;
         g_lock.unlock();
 
-        //Guess:
+        //main loop to try every combination:
         for (unsigned long long x = start; x < pow(size, j); x += threadcount) {
 
-            //guess:
+            //guess the string corresponding to x:
             guess = "";
             for (int h = 1; h < j; ++h) {
                 guess += chars[(int) (x / pow(size, j - h)) % size];
             }
             guess += chars[x % size];
 
+
+            //append the guess to every word in wordlist:
             for (int k = 0; k < wordcount; ++k) {
 
                 //if buffer array is full:
@@ -74,16 +86,20 @@ void threading(int start, vector<string> wordlist) {
                     }
                     //unlock stdout
                     g_lock.unlock();
+                    //reset count
                     count = 0;
                 }
 
                 string tmp{""};
                 //add guess to buffer array
                 if (append) {
+
+                    //append the guess to the current word
                     if (capnone || capception) {
                         finalguess[count] = wordlist[k] + guess;
                         count++;
                     }
+                    //cap the fist char of the current word and append the guess to it
                     if (capfirst || capception) {
                         try {
                             tmp = wordlist[k];
@@ -96,7 +112,7 @@ void threading(int start, vector<string> wordlist) {
                         }
                     }
 
-
+                    //cap the current word and append the guess to it
                     if (capall || capception) {
                         try {
                             tmp = wordlist[k];
@@ -112,7 +128,7 @@ void threading(int start, vector<string> wordlist) {
                         }
                     }
 
-
+                    //lowercase the current word and append the guess to it
                     if (lowercase || capception) {
                         try {
                             tmp = wordlist[k];
@@ -128,7 +144,7 @@ void threading(int start, vector<string> wordlist) {
                         }
                     }
 
-
+                    //cap the last char of the current word and append the guess to it
                     if (caplast || capception) {
                         try {
                             tmp = wordlist[k];
@@ -142,7 +158,7 @@ void threading(int start, vector<string> wordlist) {
                         }
                     }
 
-
+                    //cap all but the fist char of the current word and append the guess to it
                     if (capallbutfirst || capception) {
                         try {
                             tmp = wordlist[k];
@@ -158,7 +174,7 @@ void threading(int start, vector<string> wordlist) {
                         }
                     }
 
-
+                    //cap all but the last char of the current word and append the guess to it
                     if (capallbutlast || capception) {
                         try {
                             tmp = wordlist[k];
@@ -174,6 +190,7 @@ void threading(int start, vector<string> wordlist) {
                         }
                     }
                 }
+                //do the same as in append but prepend the guess
                 if (prepend) {
                     if (!append && (capnone || capception)) {
                         finalguess[count] = wordlist[k] + guess;
@@ -273,7 +290,7 @@ void threading(int start, vector<string> wordlist) {
             }
         }
     }
-    //print buffer one more time
+    //print the buffer one last time
     //lock stdout
     g_lock.lock();
     //print buffer array
