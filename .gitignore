@@ -44,6 +44,12 @@ ehthumbs.db
 # Folder config file
 Desktop.ini
 
+# CLion
+.idea/
+
+#cmake
+CMakeLists.txt
+
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
