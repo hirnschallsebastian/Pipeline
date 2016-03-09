@@ -1,7 +1,7 @@
 # Pipeline
 Designed to aid in targeted brute force password cracking attacks.    
 
-Pipeline is built ontop of CForce and it's more or less a "simpler" version of Matt Weir's middlechild since you can use it to append all possible combinations of chars    
+Pipeline is built on top of CForce and it's more or less a "simpler" version of Matt Weir's middlechild since you can use it to append all possible combinations of chars    
 Please don't get me wrong... Middlechild is a great tools, but I think it misses some featurs so I created my own tool!    
 
 If you like Pipeline please check out Matt Weir's work over at https://sites.google.com/site/reusablesec/Home/password-cracking-tools/middle-child !    
