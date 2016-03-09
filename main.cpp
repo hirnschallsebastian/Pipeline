@@ -3,10 +3,6 @@
 #include <mutex>
 #include <math.h>
 #include <vector>
-#include <stdio.h>
-#include <string>
-#include <climits>
-#include <stdlib.h>
 #include <fstream>
 
 using namespace std;
@@ -43,9 +39,6 @@ void threading(int start, vector<string> wordlist) {
     string chars{charset};
 
     int count{0};
-    //wordlist.push_back("password");
-    //wordlist.push_back("word");
-    //wordlist.push_back("computer");
     unsigned long long size{chars.size()},
             wordcount{wordlist.size()};
 
@@ -400,10 +393,10 @@ void help() {
     cout << "Options:" << endl;
     cout << "\t-t <value\tNumber of threads to use" << endl;
     cerr << "\t-b <value>\tNumber of values stored in each thread (Buffer)" << endl;
-    cout << "\t-w <value>\tUses the specified dictionarys (up to 10)" << endl;
+    cout << "\t-w <value>\tUses the specified dictionaries" << endl;
     cout << "\t-append\t\tAppends the values to the end of the input word" << endl;
     cout << "\t-prepend\t\tInserts the values to the front of the input word" << endl;
-    cout << "\t-charSet <value>\tUses a custom charset. Do not use 'A'!" << endl;
+    cout << "\t-charSet <value>\tUses a custom charset" << endl;
     cout << "\t-c <value>\tSpecifies how long the inserted string should be" << endl;
     cout << "\t-capFirst\t\tCapitalizes the input word" << endl;
     cout << "\t-capAll\t\tCapitalizes the entire word" << endl;
@@ -547,7 +540,9 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
-    caponly(wordlist);
+    if (minlength == 1) {
+        caponly(wordlist);
+    }
 
 
     clog << "[*] Now starting " << threadcount << " threads to append/prepend!\n";
