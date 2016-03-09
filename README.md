@@ -1,8 +1,8 @@
 # Pipeline2
-Designed to aid in targeted brute force password cracking attacks.
+Designed to aid in targeted brute force password cracking attacks.    
 
 #### Compile Pipeline
-<code>g++ main.cpp -o pipeline -std=c++11 -pthread</code>
+<code>g++ main.cpp -o pipeline -std=c++11 -pthread</code>    
 
 #### Usage
 
@@ -26,8 +26,8 @@ Designed to aid in targeted brute force password cracking attacks.
 ###### Examples:
 <code>
     ./pipeline -w rockyou.txt -w dictionary.txt -capFirst -append -max 3 | ./john -stdin -format=NT hashlist.txt
-</code>
-    Takes two input dictionarys, capitalizes the first letter, appends 3 chars and pipes the output to John
+</code>    
+    Takes two input dictionarys, capitalizes the first letter, appends 3 chars and pipes the output to John    
 
 
 ###### How it works
@@ -37,63 +37,63 @@ Please don't get me wrong... Middlechild is a great tools, but I think it misses
 
 If you like Pipeline please check out Matt Weir's work over at https://sites.google.com/site/reusablesec/Home/password-cracking-tools/middle-child !    
 
-So the way it works:
-Words in your dic.:
+So the way it works:    
+Words in your dic.:    
 
 password    
-computer
+computer    
 
-If you run:
-<code>./pipeline -append -max 3 -capfirst -capnone -capall</code>    
-Pipeline will print:
+If you run:    
+<code>./pipeline -append -max 3 -capfirst -capnone -capall</code>        
+Pipeline will print:    
 
-password
-Password
-PASSWORD
-computer
-Computer
-COMPUTER
-password0
-Password0
-PASSWORD0
-computer0
-Computer0
-COMPUTER0
-password1
-Password1
-PASSWORD1
-computer1
-Computer1
-COMPUTER1
+password    
+Password    
+PASSWORD    
+computer    
+Computer    
+COMPUTER    
+password0    
+Password0    
+PASSWORD0    
+computer0    
+Computer0    
+COMPUTER0    
+password1    
+Password1    
+PASSWORD1    
+computer1    
+Computer1    
+COMPUTER1    
 
-and so on...
+and so on...    
 
 ###### Custom Charset
 
-If you want to use a specific charset to append/prepend use -charset
+If you want to use a specific charset to append/prepend use -charset    
 
-e.g.
-<code>./pipeline -append -max 3 -capfirst -capnone -charset 2\"\!</code>
+e.g.    
+<code>./pipeline -append -max 3 -capfirst -capnone -charset 2\"\!</code>    
 
-output:
+output:    
 
-password
-Password
-PASSWORD
-computer
-Computer
-COMPUTER
-password2
-Password2
-PASSWORD2
-computer2
-Computer2
-COMPUTER0
-password"
-Password"
-PASSWORD"
-computer"
-Computer"
-COMPUTER"
+password    
+Password    
+PASSWORD    
+computer    
+Computer    
+COMPUTER    
+password2    
+Password2    
+PASSWORD2    
+computer2    
+Computer2    
+COMPUTER0    
+password"    
+Password"    
+PASSWORD"    
+computer"    
+Computer"    
+COMPUTER"    
 
-and so on...
+and so on...    
