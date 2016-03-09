@@ -40,7 +40,7 @@ If you like Pipeline please check out Matt Weir's work over at https://sites.goo
 So the way it works:
 Words in your dic.:
 
-passwrod
+password    
 computer
 
 If you run:
