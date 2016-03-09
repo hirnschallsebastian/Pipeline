@@ -44,27 +44,21 @@ password
 computer    
 
 If you run:    
-<code>./pipeline -append -max 3 -capfirst -capnone -capall</code>        
+<code>./pipeline -append -max 3 -capfirst -capnone</code>        
 Pipeline will print:    
 
 password    
 Password    
-PASSWORD    
 computer    
 Computer    
-COMPUTER    
 password0    
 Password0    
-PASSWORD0    
 computer0    
 Computer0    
-COMPUTER0    
 password1    
 Password1    
-PASSWORD1    
 computer1    
 Computer1    
-COMPUTER1    
 
 and so on...    
 
@@ -79,21 +73,15 @@ output:
 
 password    
 Password    
-PASSWORD    
 computer    
 Computer    
-COMPUTER    
 password2    
 Password2    
-PASSWORD2    
 computer2    
 Computer2    
-COMPUTER0    
 password"    
 Password"    
-PASSWORD"    
 computer"    
 Computer"    
-COMPUTER"    
 
 and so on...    
