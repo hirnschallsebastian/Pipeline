@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Pipeline2 by hirnschallsebastian</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Pipeline2</h1>
+      <h2 class="project-tagline">Designed to aid in targeted brute force password cracking attacks.</h2>
+      <a href="https://github.com/hirnschallsebastian/Pipeline2" class="btn">View on GitHub</a>
+      <a href="https://github.com/hirnschallsebastian/Pipeline2/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/hirnschallsebastian/Pipeline2/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="pipeline" class="anchor" href="#pipeline" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pipeline</h1>
+
+<p>Designed to aid in targeted brute force password cracking attacks.    </p>
+
+<p>Pipeline is built on top of CForce and it's more or less a "simpler" version of Matt Weir's middlechild since you can use it to append all possible combinations of chars.<br>
+Please don't get me wrong... Middlechild is a great tools, but I think it misses some featurs so I created my own tool!    </p>
+
+<p>If you like Pipeline please check out Matt Weir's work over at <a href="https://sites.google.com/site/reusablesec/Home/password-cracking-tools/middle-child">https://sites.google.com/site/reusablesec/Home/password-cracking-tools/middle-child</a> !    </p>
+
+<h4>
+<a id="compile-pipeline" class="anchor" href="#compile-pipeline" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compile Pipeline</h4>
+
+<p><code>g++ main.cpp -o pipeline -std=c++11 -pthread</code>    </p>
+
+<h4>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h4>
+
+<h6>
+<a id="options" class="anchor" href="#options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Options</h6>
+
+<pre><code>-t &lt;value           Number of threads to use     
+-b &lt;value&gt;          Number of values stored in each thread (Buffer)     
+-w &lt;value&gt;          Uses the specified dictionarys (up to 10)     
+-append             Appends the values to the end of the input word     
+-prepend            Inserts the values to the front of the input word     
+-charSet &lt;value&gt;    Uses a custom charset     
+-max &lt;value&gt;        Specifies how long the inserted string should be (max)
+-min &lt;value&gt;        Specifies how long the inserted string should be at least (min)
+-capFirst           Capitalizes the input word     
+-capAll             Capitalizes the entire word     
+-capLast            Capitalizes the last letter of the input word      
+-capAllButFirst     Capitalizes all the letters but the first one     
+-capAllButLast      Capitalizes all the letters but the last one      
+-capCeption         All cap options one after another      
+</code></pre>
+
+<h6>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples:</h6>
+
+<p><code>
+    ./pipeline -w rockyou.txt -w dictionary.txt -capFirst -append -max 3 | ./john -stdin -format=NT hashlist.txt
+</code><br>
+    Takes two input dictionarys, capitalizes the first letter, appends 0-3 chars and pipes the output to John    </p>
+
+<h6>
+<a id="how-it-works" class="anchor" href="#how-it-works" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How it works</h6>
+
+<p>Words in your dic.:    </p>
+
+<p>password<br>
+computer    </p>
+
+<p>If you run:<br>
+<code>./pipeline -append -max 3 -capfirst -capnone</code><br>
+Pipeline will print:    </p>
+
+<p>password<br>
+Password<br>
+computer<br>
+Computer<br>
+password0<br>
+Password0<br>
+computer0<br>
+Computer0<br>
+password1<br>
+Password1<br>
+computer1<br>
+Computer1    </p>
+
+<p>and so on...    </p>
+
+<h6>
+<a id="custom-charset" class="anchor" href="#custom-charset" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom Charset</h6>
+
+<p>If you want to use a specific charset to append/prepend use -charset    </p>
+
+<p>e.g.<br>
+<code>./pipeline -append -max 3 -capfirst -capnone -charset 2\"\!</code>    </p>
+
+<p>output:    </p>
+
+<p>password<br>
+Password<br>
+computer<br>
+Computer<br>
+password2<br>
+Password2<br>
+computer2<br>
+Computer2<br>
+password"<br>
+Password"<br>
+computer"<br>
+Computer"    </p>
+
+<p>and so on...    </p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/hirnschallsebastian/Pipeline2">Pipeline2</a> is maintained by <a href="https://github.com/hirnschallsebastian">hirnschallsebastian</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
