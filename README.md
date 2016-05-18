@@ -13,7 +13,7 @@ If you like Pipeline please check out Matt Weir's work over at https://sites.goo
 
 ###### Options
 
-    -t <value           Number of threads to use     
+    -t <value>          Number of threads to use     
     -b <value>          Number of values stored in each thread (Buffer)     
     -w <value>          Uses the specified dictionarys (up to 10)     
     -append             Appends the values to the end of the input word     
