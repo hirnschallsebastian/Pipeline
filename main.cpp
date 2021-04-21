@@ -405,7 +405,7 @@ void caponly(vector<string> wordlist) {
 void help() {
     cout << endl << "Pipeline v2" << endl;
     cout << "Written by Sebastian Hirnschall 2016" << endl;
-    cout << "Contact - hirnschallsebi@aol.at" << endl;
+    cout << "Contact - sebastian.hirnschall@gmail.com" << endl;
     cout << endl << "Usage: ./pipeline <options>" << endl;
     cout << "Options:" << endl;
     cout << "\t-t <value\tNumber of threads to use" << endl;
